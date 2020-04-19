@@ -1,0 +1,14 @@
+{
+  "name": "Suivix",
+  "version": "1.7.0",
+  "description": "",
+  "main": "suivix.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mw3y",
+  "license": "MIT",
+  "dependencies": {
+    "discord.js": "^12.1.1"
+  }
+}
