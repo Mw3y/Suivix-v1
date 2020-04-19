@@ -1,8 +1,6 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
-const Config = require('./modules/utils/Config');
 const CommandReader = require('./modules/CommandReader');
-const CommandTable = require('./modules/CommandTable');
 let commandReader = new CommandReader();
 
 /**
@@ -30,8 +28,4 @@ client.on("message", (message) => {
 
 });
 
-client.on("messageReactionAdd", (reaction, user) => {
-      
-});
-
-client.login(Config.DISCORD_CLIENT_TOKEN);
+client.login("your token goes here");
