@@ -131,7 +131,7 @@ async function generateAppelMessage(message, msg, channel, audioChannel, role) {
  * @param {*} role - The role
  */
 async function doAppel(user, guild, channel, audioChannel, studentsRole) {
-    let students = await guild.roles.cache.find(r => r.id === role.id).members; //fetch user with the role
+    let students = await guild.roles.cache.find(r => r.id === studentsRole.id).members; //fetch user with the role
     let audioChannelStudents = await audioChannel.members.filter(member => member.roles.cache.has(studentsRole.id)) //fetch users in the voice channel
 
     let member = guild.member(user); //transform the user into a guildMember
@@ -180,14 +180,14 @@ async function doAppel(user, guild, channel, audioChannel, studentsRole) {
         presentUsersText += "```";
     }
 
-    let total = "\n:white_check_mark: Total des " + role.toString() + "(s) présent(e)(s) : `" + presentUsers.length + "/" + students.size + "`\n" +
-        ":x: Total des " + role.toString() + "(s) absent(e)(s) : `" + absentUsers.length + "/" + students.size + "`";
+    let total = ":white_check_mark: Total des " + studentsRole.toString() + "(s) présent(e)(s) : `" + presentUsers.length + "/" + students.size + "`\n" +
+        ":x: Total des " + studentsRole.toString() + "(s) absent(e)(s) : `" + absentUsers.length + "/" + students.size + "`\n\n";
 
     channel.send(Tools.setupDefaultEmbed().setTitle(`Suivi de ${audioChannel.name}`) //send result
-        .setDescription(intro + absentsText + presentUsersText + total).setColor(role.color).setFooter("Bot Suivix (v2.0.3[Beta]) réalisé par MΛX#2231"));
+        .setDescription(intro + total + absentsText + presentUsersText).setColor(studentsRole.color).setFooter("Bot Suivix (v2.0.3[Beta]) réalisé par MΛX#2231"));
 
     user.send(Tools.setupDefaultEmbed().setTitle(`Suivi de ${audioChannel.name}`) //send result in pv
-        .setDescription(intro + absentsText.split(studentsRole.toString()).join("`@" + studentsRole.name + "`") + presentUsersText.split(studentsRole.toString()).join("`@" + studentsRole.name + "`") + total.split(studentsRole.toString()).join("`@" + studentsRole.name + "`")).setColor(role.color.setFooter("Bot Suivix (v2.0.3[Beta]) réalisé par MΛX#2231")));
+        .setDescription(intro  + total.split(studentsRole.toString()).join("`@" + studentsRole.name + "`") + absentsText.split(studentsRole.toString()).join("`@" + studentsRole.name + "`") + presentUsersText.split(studentsRole.toString()).join("`@" + studentsRole.name + "`")).setColor(studentsRole.color).setFooter("Bot Suivix (v2.0.3[Beta]) réalisé par MΛX#2231"));
 }
 
 function generateNoValidChannelException(channel) {
