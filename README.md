@@ -4,3 +4,5 @@ Ajoutez-le sur votre serveur discord avec : https://discordapp.com/oauth2/author
 
 SITE WEB OFFICIEL : https://www.suivix.xyz<br/>
 ATTENTION : La version mise en ligne sur github ne comprend pas l'interface graphique.
+
+Une nouvelle version du code, comprenant l'interface graphique est disponible : https://github.com/Mw3y/Suivix-v3.
